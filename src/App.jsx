@@ -53,27 +53,29 @@ export default function App() {
 							<div className="profilepic">
 								<img src="/random.jpeg" alt="" />
 							</div>
-							<div style={{ marginLeft: "30px" }}>
-								{isOpen && (
-									<div
-										style={{ position: "absolute", top: "54px", right: "72px" }}
-									>
-										<GifPicker
-											onGifClick={setSelected}
-											contentFilter="high"
-											tenorApiKey={"AIzaSyAEHmYxHg4PL0qHK_WtHkOtzSKOFJJB0Ps"}
-										/>
-									</div>
-								)}
-								<Button
-									onClick={() => setIsOpen(!isOpen)}
-									mr={0.5}
-									iconRight={<Smile />}
-									ml={"auto"}
-									auto
-									px={0.6}
-								/>
-							</div>
+							{isOpen && (
+								<div
+									style={{
+										position: "absolute",
+										top: "54px",
+										right: "72px",
+									}}
+								>
+									<GifPicker
+										onGifClick={setSelected}
+										contentFilter="high"
+										tenorApiKey={"AIzaSyAEHmYxHg4PL0qHK_WtHkOtzSKOFJJB0Ps"}
+									/>
+								</div>
+							)}
+							<Button
+								onClick={() => setIsOpen(!isOpen)}
+								mr={0.5}
+								iconRight={<Smile />}
+								ml={"auto"}
+								auto
+								px={0.6}
+							/>
 							<Button auto>Post</Button>{" "}
 						</div>
 					</div>
