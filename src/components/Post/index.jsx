@@ -8,7 +8,9 @@ export default function Post({ post }) {
 				<img src={``} alt="" />
 			</div>
 			<div className={classes.layout}>
-				<div>{post.username}</div>
+				<div>
+					<a href={`/profile/${post.user.id}`}>{post.user.username}</a>
+				</div>
 				<div>
 					<img
 						src={

@@ -1,7 +1,8 @@
 #root {
 	max-width: 1280px;
 	margin: 0 auto;
-
+	display: flex;
+	justify-content: center;
 	width: 100%;
 	text-align: center;
 }
@@ -26,12 +27,12 @@ a {
 	text-decoration: inherit;
 }
 
-.container {
+main {
 	display: flex;
 	width: 100%;
 }
 
-.container > div:first-child {
+main > div:first-child {
 	flex: 1;
 	display: flex;
 	justify-content: flex-end;
@@ -61,7 +62,7 @@ a {
 	justify-content: space-between;
 	width: 100%;
 }
-.container > div:last-child {
+main > div:last-child {
 	flex: 1;
 }
 
@@ -69,6 +70,7 @@ a {
 	height: 70px;
 	width: 70px;
 }
+
 .profilepic {
 	height: 50px;
 	overflow: hidden;
@@ -78,4 +80,60 @@ a {
 .profilepic img {
 	height: 50px;
 	width: 50px;
+}
+.ProfilePageContainer {
+	min-height: 100vh;
+	max-width: 600px;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	border-left: 1px solid rgb(104, 104, 104);
+	border-right: 1px solid rgb(104, 104, 104);
+}
+.ProfilePageContainer > div:first-child {
+	font-size: x-large;
+	display: flex;
+	padding: 10px 15px;
+	font-weight: 600;
+}
+.ProfilePageContainer > div:first-child > div {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.ProfilePageContainer > div:nth-child(2) {
+	height: 100px;
+	background: #41295a;
+	background: -webkit-linear-gradient(to top, #2f0743, #41295a);
+	background: linear-gradient(to top, #2f0743, #41295a);
+}
+.ProfilePageContainer > div:nth-child(3) {
+	height: 120px;
+	position: relative;
+	border-bottom: 1px solid rgb(104, 104, 104);
+}
+.ProfilePageContainer > div:nth-child(3) img {
+	height: 100px;
+	width: 100px;
+	box-shadow: inset 0 0 0 1px black;
+}
+.ProfilePageContainer > div:nth-child(3) > div {
+	position: absolute;
+	top: -37px;
+	left: 20px;
+	font-weight: 700;
+	display: flex;
+	flex-direction: column;
+	font-size: large;
+	gap: 10px;
+	width: 100px;
+}
+.ProfilePageContainer > div:nth-child(3) > div > div:first-child {
+	height: 100px;
+
+	overflow: hidden;
+	border-radius: 60px;
+	width: 100px;
+}
+.ProfilePageContainer > div:last-child {
 }

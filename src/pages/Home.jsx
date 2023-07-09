@@ -2,30 +2,50 @@ import { Button } from "@geist-ui/core"
 import Smile from "@geist-ui/icons/smile"
 import GifPicker from "gif-picker-react"
 import { useState } from "react"
-import "./App.css"
-import Post from "./components/Post"
-import Profile from "./components/Profile"
-export default function App() {
-	const [isOpen, setIsOpen] = useState(false)
-	const [selected, setSelected] = useState(null)
-	const posts = [
-		{
+
+import Post from "../components/Post"
+import Profile from "../components/Profile"
+export const posts = [
+	{
+		id: 1,
+		user: {
 			id: 1,
 			username: "Lamo",
 		},
-		{
+	},
+	{
+		id: 2,
+		user: {
+			id: 1,
+			username: "Lamo",
+		},
+	},
+	{
+		id: 3,
+		user: {
+			id: 1,
+			username: "Lamo",
+		},
+	},
+	{
+		id: 4,
+		user: {
 			id: 2,
 			username: "androtate",
 		},
-		{
-			id: 3,
-			username: "rcym",
+	},
+	{
+		id: 5,
+		user: {
+			id: 2,
+			username: "androtate",
 		},
-		{
-			id: 4,
-			username: "jozee",
-		},
-	]
+	},
+]
+export default function Home() {
+	const [isOpen, setIsOpen] = useState(false)
+	const [selected, setSelected] = useState(null)
+
 	const user = {
 		username: "LazyClicks",
 	}
@@ -76,7 +96,7 @@ export default function App() {
 								auto
 								px={0.6}
 							/>
-							<Button auto>Post</Button>{" "}
+							<Button auto>Post</Button>
 						</div>
 					</div>
 
