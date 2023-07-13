@@ -9,7 +9,7 @@ export default function AuthPage() {
 				}}
 			>
 				<a
-					href="https://discord.com/api/oauth2/authorize?client_id=1129128976623878214&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2F&response_type=token&scope=identify"
+					href="https://discord.com/api/oauth2/authorize?client_id=1129128976623878214&redirect_uri=https%3A%2F%2Fgiffer-lemon.vercel.app%2F&response_type=token&scope=identify"
 					style={{
 						background: "#3498DB",
 						padding: 20,
