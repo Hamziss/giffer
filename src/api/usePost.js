@@ -24,3 +24,13 @@ export const useCreatePost = () => {
     }
   })
 }
+export const useGetUserPost = (id) => {
+  return useQuery({
+    queryKey: ["posts", id],
+    keepPreviousData: true,
+    queryFn: async () => {
+      return await fetch(`https://vivacious-gold-veil.cyclic.app/posts/${id}`)
+        .then(async (res) => await res.json())
+    },
+  });
+}
