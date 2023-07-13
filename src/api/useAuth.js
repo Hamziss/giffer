@@ -5,7 +5,7 @@ export const useAuth = () => {
   return useMutation({
     mutationFn: async (accessToken) => {
 
-      const res = await fetch("https://discord.com/api/users/@me", {
+      const discordPayload = await fetch("https://discord.com/api/users/@me", {
         headers: {
           Authorization: "Bearer " + accessToken,
         }
@@ -15,7 +15,11 @@ export const useAuth = () => {
 
       // save the user in our db
       const user = await fetch("https://vivacious-gold-veil.cyclic.app/auth", {
-        body: JSON.stringify(res),
+        body: JSON.stringify({
+          avatar: discordPayload.avatar,
+          username: discordPayload.username,
+          discordId: discordPayload.id
+        }),
         headers: {
           "Content-Type": "application/json"
         },
