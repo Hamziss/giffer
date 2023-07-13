@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom"
 import classes from "./style.module.css"
 
 export default function Profile({ user }) {
@@ -6,17 +7,20 @@ export default function Profile({ user }) {
 		<div className={classes.container}>
 			<div className={classes.upperdiv}>
 				<div>
-					<img src="" alt="" />
+					<img
+						src={`https://cdn.discordapp.com/avatars/${user?.discordId}/${user?.avatar}.png`}
+						alt=""
+					/>
 				</div>
-				<a href="/">{user.username}</a>
+				<Link href="/">{user?.username}</Link>
 			</div>
 			<div>
-				<a href="/">Home</a>
-				<a href="/settings">Settings</a>
-				<a href="/">Messages</a>
-				<a href="/auth" onClick={() => localStorage.removeItem("user")}>
+				<Link to="/">Home</Link>
+				<Link to="/settings">Settings</Link>
+				<Link to="/">Messages</Link>
+				<Link to="/auth" onClick={() => localStorage.removeItem("user")}>
 					Logout
-				</a>
+				</Link>
 			</div>
 		</div>
 	)

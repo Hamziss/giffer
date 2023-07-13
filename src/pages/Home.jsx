@@ -1,53 +1,30 @@
+/* eslint-disable react/prop-types */
 import { Button } from "@geist-ui/core"
 import Smile from "@geist-ui/icons/smile"
 import GifPicker from "gif-picker-react"
 import { useState } from "react"
 
+import { useCreatePost, useGetPost } from "../api/usePost"
+
 import Post from "../components/Post"
 import Profile from "../components/Profile"
-export const posts = [
-	{
-		id: 1,
-		user: {
-			id: 1,
-			username: "Lamo",
-		},
-	},
-	{
-		id: 2,
-		user: {
-			id: 1,
-			username: "Lamo",
-		},
-	},
-	{
-		id: 3,
-		user: {
-			id: 1,
-			username: "Lamo",
-		},
-	},
-	{
-		id: 4,
-		user: {
-			id: 2,
-			username: "androtate",
-		},
-	},
-	{
-		id: 5,
-		user: {
-			id: 2,
-			username: "androtate",
-		},
-	},
-]
-export default function Home() {
+
+export default function Home({ user }) {
+	console.log("user", user)
 	const [isOpen, setIsOpen] = useState(false)
 	const [selected, setSelected] = useState(null)
+	const { data, isLoading, refetch } = useGetPost()
+	const { mutateAsync } = useCreatePost()
 
-	const user = {
-		username: "LazyClicks",
+	const handleCreatePost = async () => {
+		const payload = {
+			url: selected.url,
+			user: user?._id,
+		}
+		const response = await mutateAsync(payload)
+		console.log(response)
+		setSelected(null)
+		refetch()
 	}
 	return (
 		<main>
@@ -71,7 +48,10 @@ export default function Home() {
 							}}
 						>
 							<div className="profilepic">
-								<img src="/random.jpeg" alt="" />
+								<img
+									src={`https://cdn.discordapp.com/avatars/${user?.discordId}/${user?.avatar}.png`}
+									alt=""
+								/>
 							</div>
 							{isOpen && (
 								<div
@@ -84,6 +64,7 @@ export default function Home() {
 									<GifPicker
 										onGifClick={setSelected}
 										contentFilter="high"
+										theme="dark"
 										tenorApiKey={"AIzaSyAEHmYxHg4PL0qHK_WtHkOtzSKOFJJB0Ps"}
 									/>
 								</div>
@@ -96,7 +77,9 @@ export default function Home() {
 								auto
 								px={0.6}
 							/>
-							<Button auto>Post</Button>
+							<Button onClick={handleCreatePost} auto>
+								Post
+							</Button>
 						</div>
 					</div>
 
@@ -110,9 +93,11 @@ export default function Home() {
 						</>
 					)}
 				</div>
-				{posts.map((post) => (
-					<Post key={post.id} post={post} />
-				))}
+				{isLoading ? (
+					<div>Loading...</div>
+				) : (
+					data.map((post) => <Post key={post._id} post={post} />)
+				)}
 			</div>
 			<div className="third-div"></div>
 		</main>

@@ -1,20 +1,19 @@
 import ArrowLeft from "@geist-ui/icons/arrowLeft"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Post from "../components/Post"
-import { posts } from "./Home"
 
 export default function ProfilePage() {
 	const params = useParams()
-
+	const posts = []
 	const postsOfUser = posts.filter((post) => post.user.id == params.id)
 
 	return (
 		<div className="ProfilePageContainer">
 			<div>
 				<div>
-					<a href="/">
+					<Link to="/">
 						<ArrowLeft />
-					</a>
+					</Link>
 					{postsOfUser[0]?.user.username}
 				</div>
 			</div>
