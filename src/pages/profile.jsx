@@ -20,7 +20,8 @@ export default function ProfilePage() {
 			<div>
 				<div>
 					<div>
-						<img src="/random.jpeg" alt="" />
+						src=
+						{`https://cdn.discordapp.com/avatars/${data?.user?.discordId}/${data?.user?.avatar}.png`}
 					</div>
 					<div>{data?.user.username}</div>
 				</div>
